@@ -6,6 +6,7 @@ include_once $filepath . '/../lib/session.php';
 
 <?php
 Session::init();
+Session::checkUserLogin();
 ?>
 
 
@@ -97,10 +98,24 @@ Session::init();
             </nav>
         </div>
         <div class="search-bag" style="font-size: 18px; color: white;">
-            <div class="user" style="margin-right: 10px;">
+            <?php
+
+            ?>
+            <div class="user" style="margin-right: 10px;" data-toggle="modal" data-target="#modelId">
                 <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
-                <span style="font-size: 16px;">Login/Registry</span>
+                <span style="font-size: 16px;">Login/Register</span>
             </div>
+
+            <!-- <div class="user" style="margin-right: 10px; position:relative">
+                <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
+                <span style="font-size: 16px;">Luân Trần
+                </span>
+                <i class="ml-2 fa fa-caret-down" style="cursor:pointer;" data-toggle="dropdown"></i>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Thông tin tài khoản</a>
+                    <a class="dropdown-item" href="#">Đăng xuất</a>
+                </div>
+            </div> -->
 
             <div class="_find-bag" style="padding-left: 20px;">
                 <a href="#" href="" class="fa fa-search topfa" style="margin-left: 10px;"></a>
@@ -112,5 +127,53 @@ Session::init();
     </div>
     <!-- Kết thúc header -->
 
-    <!-- Modal Login-->
-   
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+        Launch
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade modalLogin" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;padding: 1rem;">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -7px; margin-right:2px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center">
+                        <h4>Login</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email1" placeholder="Your email address...">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password1" placeholder="Your password...">
+                            </div>
+                            <button type="button" class="btn btn-info btn-block btn-round" onclick="requestAjaxToLogin()">Login</button>
+                        </form>
+
+                        <div class="text-center text-muted delimiter">or use a social network</div>
+                        <div class="d-flex justify-content-center social-buttons">
+                            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </button>
+                            </di>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
+                </div>
+            </div>
+        </div>
+    </div>

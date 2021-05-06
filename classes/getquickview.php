@@ -23,21 +23,21 @@ if (isset($_GET['id_book'])) {
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h5 class="modal-title">Thông tin sản phẩm
+                        <h5 class="modal-title _modaltitle">Thông tin sản phẩm
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <button type="button" class="close _close" data-dismiss="modal">×</button>
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="modal-body-image">
+                    <div class="modal-body _modalbody">
+                        <div class="modal-body-image _modalimage">
                             <img id="modal_image" src="<?php 
                                 $strimage = $result['image_book'];
                                 $arrimg = explode(",",$strimage);
                                 echo 'uploads/images/book/'.$arrimg[0];
                             ?>" alt="">
                         </div>
-                        <div class="modal-body-info">
+                        <div class="modal-body-info _modalinfo">
                             <h5 class="info-name"><a href="details.php?id_book=<?php echo $result['id_book'] ?>"><?php echo $result['name_book'] ?></a></h5>
                             <?php
                             if ($result['salecheck_book'] == '2') {

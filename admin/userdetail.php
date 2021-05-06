@@ -98,9 +98,32 @@ Session::checkSession();
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+                </div>
+                
+                <br>
+                <div class="_dsproduct">
+                <h4 class="ml-4">Danh sách đơn hàng</h4>
+                <div class="row">
+                        <div class="col-11 m-auto">
+                            <div class="table-responsive">
+                                <table id="dataTable" class="table table-striped table-bordered display">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Mã ĐH</th>
+                                            <th scope="col">Địa chỉ</th>
+                                            <th scope="col">Ngày mua</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Chi tiết</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 </div>
         </div>
         </main>
