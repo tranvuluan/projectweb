@@ -1,0 +1,96 @@
+*{margin: 0; padding: 0;}
+.container-fluid {
+    background-color: #C73736;
+    height: 40px;
+    
+}
+
+.noidung {
+    width: 1200px;
+    display: flex;
+    margin: auto;
+}
+
+.menu {
+    width: 1100px;
+    margin: auto;
+}
+.logo {
+    width: 30%;
+    height: 100%;
+    
+    margin: auto;
+}
+
+.slogan{
+    width: 60%;
+    height: 100px;
+   
+}
+
+img {
+    height: 100px;
+}
+
+/* Menu */
+
+nav ul{
+    display: flex;
+}
+nav> ul li{
+    list-style: none; 
+    border-left:1px solid rgb(240, 240, 240);
+}
+nav> ul li a{
+    display: block;
+    padding: 0 13px;
+    line-height: 40px;
+    color: #f1f2f3;
+    text-decoration: none;
+}
+nav ul li:first-child {
+    border-left: none;
+}
+nav> ul li:first-child a{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+nav ul li:hover>a{
+    background: red;
+    opacity: .7;
+    color: yellow;
+    text-decoration: none;
+}
+
+/*menu con*/
+
+nav li ul{
+    display: none;
+    min-width: 200px;
+    position: absolute;
+    z-index: 2;
+}
+nav li>ul li{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: #999;
+    text-align: left;
+}
+nav li>ul li:first-child a{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+nav li>ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+nav li>ul li:last-child a{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+/*hiện menu con*/
+nav  li:hover > ul{
+    display:  block;
+}

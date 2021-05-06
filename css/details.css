@@ -1,0 +1,65 @@
+.deltails-content {
+    width: 1200px;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deltails-content-left {
+    padding-left: 20px;
+    width: 43%;
+    border-right: 1px solid gray;
+}
+
+.deltails-content-right {
+    width: 55%;
+}
+
+.del-block {
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+
+.del-block .price-quantity{
+    width: 40%;
+}
+
+.del-description {
+    padding-top: 10px;
+    width: 60%;
+}
+
+.del-btn a{
+    text-decoration: none !important;
+}
+
+.del-btn .button {
+    color: white;
+    font-weight: 500;
+    background-color: #C73736;
+    text-align: center;
+    line-height: 37px;
+    
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+    border-bottom-left-radius: 37px;
+    border-bottom-right-radius: 37px;
+    transition: 0.4s;
+}
+
+.del-btn .button:hover {
+    border: 1px solid red;
+    background-color: white;
+    color: #C73736;
+}
+
+.deltails-content-left img {
+    height: 100%;
+    width: auto;
+}
+
+.fa-star {
+    color: gold;
+}

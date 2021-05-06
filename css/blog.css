@@ -1,0 +1,159 @@
+/*Header*/
+*{margin: 0; padding: 0;}
+
+._top{
+    height: 40px!important;
+    background-color: rgba(250, 245, 219, 0.336);
+    line-height: 35px;
+    font-size: 15px;
+    color: #646363;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+._top .row{
+    height: 40px!important;
+    display: flex;
+    margin: auto;
+    border: 1px solid pink;
+    justify-content: space-between;
+}
+
+.row ._left{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+._left .fa{
+    font-size: 18px;
+}
+
+._left .phone {
+    width: 50%;
+}
+
+._left .email{
+    width: 50%;
+}
+
+.row ._middle{
+    width: 40%;
+    text-align: center;
+}
+
+._middle a:hover{
+    background-color: #ffffff!important;
+    color: #b48b33!important;
+    border: 1px solid #b48b33;
+}
+
+.row ._right{
+    width: 30%;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.row ._right .fa{
+    padding-left: 10px;
+    color: #818181;
+}
+
+.row ._right .fa:hover{
+    color: #b48b33;
+}
+
+
+.container-fluid {
+    background-color: #5abecf;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+}
+
+.logo{
+    width: 200px;
+    border: 1px solid black;
+}
+.menu {
+    width: 700px;
+    margin: auto;
+    height: 60px;
+    font-size: 18px;
+    font-family: Segoe ui light;
+}
+
+.search-bag{
+    width: 300px;
+    display: flex;
+}
+
+.user{
+    width: 50%;
+}
+
+._find-bag{
+    width: 50%;
+}
+
+.user:hover{
+    color: #664;
+}
+
+.search-bag .fa:hover{
+    color: #664;
+}
+
+/* Menu */
+
+nav ul{
+    display: flex;
+}
+nav> ul li{
+    list-style: none; 
+}
+
+nav> ul li a{
+    display: block;
+    padding: 0 15px 0 15px;
+    line-height: 60px;
+    color: #f1f2f3;
+    text-decoration: none;
+}
+
+nav ul li:hover>a{
+    opacity: .7;
+    color: rgb(231, 82, 37);
+    text-decoration: none;
+    padding: 0 15px 0 15px;
+    font-weight: bold;
+}
+
+/*menu con*/
+
+nav li ul{
+    display: none;
+    min-width: 200px;
+    position: absolute;
+    top: 100px;
+    z-index: 2;
+}
+nav li>ul li{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background: rgb(77, 156, 170);
+    text-align: left;
+}
+nav li>ul li a{
+    line-height: 50px;
+}
+
+/*hiện menu con*/
+nav  li:hover > ul{
+    display:  block;
+}
+
