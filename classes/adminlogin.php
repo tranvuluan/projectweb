@@ -45,8 +45,8 @@
                 else
                 {
                     $alert = "User or Password not match";
-                return $alert;
                 }
+                return $alert;
             }
         }   
 

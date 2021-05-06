@@ -99,23 +99,32 @@ Session::checkUserLogin();
         </div>
         <div class="search-bag" style="font-size: 18px; color: white;">
             <?php
-
+            if (isset($_SESSION['userLogin']) == true) {
             ?>
-            <div class="user" style="margin-right: 10px;" data-toggle="modal" data-target="#modelId">
-                <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
-                <span style="font-size: 16px;">Login/Register</span>
-            </div>
-
-            <!-- <div class="user" style="margin-right: 10px; position:relative">
-                <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
-                <span style="font-size: 16px;">Luân Trần
-                </span>
-                <i class="ml-2 fa fa-caret-down" style="cursor:pointer;" data-toggle="dropdown"></i>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Thông tin tài khoản</a>
-                    <a class="dropdown-item" href="#">Đăng xuất</a>
+                <div class="user" style="margin-right: 10px; position:relative">
+                    <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
+                    <span style="font-size: 16px;"><?php echo $_SESSION['fullname'] ?>
+                    </span>
+                    <i class="ml-2 fa fa-caret-down" style="cursor:pointer;" data-toggle="dropdown"></i>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Thông tin tài khoản</a>
+                        <a class="dropdown-item" href="?action=logout">Đăng xuất</a>
+                        <?php
+                        if (isset($_GET['action']) == 'logout') {
+                            session::destroy();
+                            header('Location:index.php');
+                        }
+                        ?>
+                    </div>
                 </div>
-            </div> -->
+            <?php
+            } else {
+            ?>
+                <div class="user" style="margin-right: 10px;" data-toggle="modal" data-target="#modelId">
+                    <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
+                    <span style="font-size: 16px;">Login/Register</span>
+                </div>
+            <?php } ?>
 
             <div class="_find-bag" style="padding-left: 20px;">
                 <a href="#" href="" class="fa fa-search topfa" style="margin-left: 10px;"></a>
@@ -126,11 +135,6 @@ Session::checkUserLogin();
         </div>
     </div>
     <!-- Kết thúc header -->
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-        Launch
-    </button>
 
     <!-- Modal -->
     <div class="modal fade modalLogin" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -144,14 +148,15 @@ Session::checkUserLogin();
                 <div class="modal-body">
                     <div class="form-title text-center">
                         <h4>Login</h4>
+                        <span id="spanlogin" style="color:red; padding-bottom:5px; display: inline-block;"></span>
                     </div>
                     <div class="d-flex flex-column text-center">
-                        <form>
+                        <form id="formLoginUser">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email1" placeholder="Your email address...">
+                                <input type="email" class="form-control" id="username" placeholder="Your email address...">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password1" placeholder="Your password...">
+                                <input type="password" class="form-control" id="password" placeholder="Your password...">
                             </div>
                             <button type="button" class="btn btn-info btn-block btn-round" onclick="requestAjaxToLogin()">Login</button>
                         </form>

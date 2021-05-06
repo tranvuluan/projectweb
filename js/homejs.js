@@ -115,3 +115,25 @@ function removeItemFromCartSession(element) {
 
 
 
+function requestAjaxToLogin() {
+    let username = document.getElementById('username').value; 
+    let password = document.getElementById('password').value; 
+    $(document).ready(
+        $.ajax({
+            method: 'POST',
+            url: 'classes/getloginuser.php',
+            data: {
+                'username': username,
+                'password': password
+            },
+            success: function (response) {
+                if (response == 1) {
+                    location.reload();
+                }
+                else {
+                    $('#spanlogin').html('Sai tên đăng nhập hoặc mật khẩu')
+                }
+            }
+        })
+    );
+}
