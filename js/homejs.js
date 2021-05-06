@@ -92,7 +92,7 @@ function changeValue(element, trId) {
             let html = price_book * value + '<br><span style="text-decoration: line-through; color:#41414141">' + original_price_book * value + '</span>'
             childNode[4].innerHTML = html
         }
-        
+
     }
 }
 
@@ -116,8 +116,8 @@ function removeItemFromCartSession(element) {
 
 
 function requestAjaxToLogin() {
-    let username = document.getElementById('username').value; 
-    let password = document.getElementById('password').value; 
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
     $(document).ready(
         $.ajax({
             method: 'POST',
@@ -136,4 +136,8 @@ function requestAjaxToLogin() {
             }
         })
     );
+}
+
+function toCheckcout(status) {
+    (status == '1') ? window.open('thanhtoan.php') : document.getElementById('btnLogin').click();
 }

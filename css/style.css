@@ -101,6 +101,7 @@
 
 .user {
     width: 50%;
+    cursor: pointer;
 }
 
 ._find-bag {

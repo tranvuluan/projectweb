@@ -120,7 +120,7 @@ Session::checkUserLogin();
             <?php
             } else {
             ?>
-                <div class="user" style="margin-right: 10px;" data-toggle="modal" data-target="#modelId">
+                <div id="btnLogin" class="user" style="margin-right: 10px;" data-toggle="modal" data-target="#modelId">
                     <a href="#" class="fa fa-user-o topfa" style="padding-right: 5px;"></a>
                     <span style="font-size: 16px;">Login/Register</span>
                 </div>
@@ -138,7 +138,7 @@ Session::checkUserLogin();
 
     <!-- Modal -->
     <div class="modal fade modalLogin" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;padding: 1rem;">
+        <div class="modal-dialog" role="document" style="max-width: 420px;padding: 1rem;">
             <div class="modal-content">
                 <div class="modal-header border-bottom-0">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -7px; margin-right:2px;">

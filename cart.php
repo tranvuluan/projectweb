@@ -103,7 +103,7 @@ echo "</pre>";
     </div>
     <div class="btn-cart">
         <a href="index.html" class="btn btn-info btncart">TIẾP TỤC MUA SẮM</a>
-        <a href="thanhtoan.html" class="btn btn-outline-info btncart" onclick="toPay()">THANH TOÁN</a>
+        <a href="#" class="btn btn-outline-info btncart" onclick="toCheckcout(<?php (isset($_SESSION['userLogin']) == true)? print '1': print '0' ?>)">THANH TOÁN</a>
     </div>
 </div>
 <br>
