@@ -14,7 +14,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-p{
+._pinput{
     margin-bottom: 2px!important;
 }
 
@@ -29,7 +29,7 @@ p{
     line-height: 30px;
 }
 
-input{
+._inputthanhtoan{
     width: 300px;
     height: 28px;
     margin-bottom: 10px!important;
@@ -124,7 +124,7 @@ input{
     margin-right: 40px;
 }
 
-form{
+._formthanhtoan{
     padding: 10px 0 10px 0;
 }
 
@@ -144,12 +144,12 @@ form{
     padding-bottom: 28px!important;
 }
 
-.btn{
+.btnthanhtoan{
     background-color: rgb(26, 26, 26)!important;
     cursor: pointer;
 }
 
-.btn:hover{
+.btnthanhtoan:hover{
     color: rgb(24, 24, 24)!important;
     background-color: white!important;
 }

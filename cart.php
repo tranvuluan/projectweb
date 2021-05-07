@@ -47,6 +47,7 @@ if (isset($_GET['id_book'])) {
 
 echo "<pre>";
 print_r($_SESSION['cart']);
+echo $_SESSION['id_user'];
 echo "</pre>";
 
 
@@ -102,8 +103,8 @@ echo "</pre>";
         <span id="total-price" class="total-price"><?php if(isset($totalprice)) echo $totalprice ?>đ</span>
     </div>
     <div class="btn-cart">
-        <a href="index.html" class="btn btn-info btncart">TIẾP TỤC MUA SẮM</a>
-        <a href="#" class="btn btn-outline-info btncart" onclick="toCheckcout(<?php (isset($_SESSION['userLogin']) == true)? print '1': print '0' ?>)">THANH TOÁN</a>
+        <a href="index.php" class="btn btn-info btncart">TIẾP TỤC MUA SẮM</a>
+        <a href="#" class="btn btn-outline-info btncart" onclick="toCheckcout(<?php (isset($_SESSION['userLogin']) == true)? print '1': print '0' ?>, <?php (isset($_SESSION['cart']))? print count($_SESSION['cart']) : print '0' ?>)">THANH TOÁN</a>
     </div>
 </div>
 <br>

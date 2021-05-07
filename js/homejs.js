@@ -163,10 +163,10 @@ function requestAjaxToRegister() {
         if (response == -1) {
             $('#spanlogin').html("Tên đăng nhập đã tồn tại");
         }
-        else if (response == 0){
+        else if (response == 0) {
             $('#spanlogin').html("Mật khẩu không khớp");;
         }
-        else if (response == 1){
+        else if (response == 1) {
             $('#spanlogin').html("Đã tạo tài khoản thành công");
         }
         else {
@@ -198,6 +198,19 @@ function toSignIn() {
     document.getElementById('fg_phone').classList.toggle('d-none');
 }
 
-function toCheckcout(status) {
-    (status == '1') ? window.open('thanhtoan.php') : document.getElementById('btnLogin').click();
+function toCheckcout(status, countItem) {
+    if (status == '1') {
+        if (countItem > 0)
+            window.open('thanhtoan.php');
+        else 
+            alert('Giỏ hàng hiện rỗng');
+    }
+    else {
+        document.getElementById('btnLogin').click();
+    }
+}
+
+function requestAjaxToCompleteCheckout(jsonarr, id_user) {
+    console.log(jsonarr);
+    console.log(id_user);
 }
