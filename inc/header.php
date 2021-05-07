@@ -110,7 +110,7 @@ Session::checkUserLogin();
                         <a class="dropdown-item" href="#">Thông tin tài khoản</a>
                         <a class="dropdown-item" href="?action=logout">Đăng xuất</a>
                         <?php
-                        if (isset($_GET['action']) == 'logout') {
+                        if (isset($_GET['action']) == 'logout' && $_GET['action'] == 'logout') {
                             session::destroy();
                             header('Location:index.php');
                         }
