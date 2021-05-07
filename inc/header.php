@@ -150,15 +150,30 @@ Session::checkUserLogin();
                         <h4>Login</h4>
                         <span id="spanlogin" style="color:red; padding-bottom:5px; display: inline-block;"></span>
                     </div>
-                    <div class="d-flex flex-column text-center">
+                    <div class="d-flex flex-column">
                         <form id="formLoginUser">
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="username" placeholder="Your email address...">
+                            <div id="fg_fullname" class="form-group d-none">
+                                <label>Họ tên</label>
+                                <input type="fullname" class="form-control" id="fullname">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Your password...">
+                                <label>Tên đăng nhập</label>
+                                <input type="email" class="form-control" id="username">
                             </div>
-                            <button type="button" class="btn btn-info btn-block btn-round" onclick="requestAjaxToLogin()">Login</button>
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group d-none" id="fg_repassword">
+                                <label>Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" id="repassword">
+                            </div>
+                            <div id="fg_phone" class="form-group d-none">
+                                <label>Số điện thoại</label>
+                                <input type="phone" class="form-control" id="phone">
+                            </div>
+                            <button id="btnlogin" type="button" class="btn btn-info btn-block btn-round" onclick="requestAjaxToLogin()">Login</button>
+                            <button id="btnregister" type="button" class="btn btn-info btn-block btn-round d-none" onclick="requestAjaxToRegister(this)">Register</button>
                         </form>
 
                         <div class="text-center text-muted delimiter">or use a social network</div>
@@ -177,7 +192,8 @@ Session::checkUserLogin();
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
+                    <div class="signup-section">Not a member yet? <a href="#a" class="text-info" onclick="toRegister()"> Sign Up</a>.</div>
+                    <div id="footer_signin" class="btn btn-primary w-100 d-none" onclick="toSignIn()">Sign In</div>
                 </div>
             </div>
         </div>

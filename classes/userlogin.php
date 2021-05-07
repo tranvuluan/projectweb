@@ -34,12 +34,38 @@ class userlogin
             Session::set('userLogin', true);
             Session::set('id_user', $value['id_user']);
             Session::set('username', $value['username']);
-            Session::set('fullname', $this->fm->textShorten($value['fullname'],15));
+            Session::set('fullname', $this->fm->textShorten($value['fullname'], 15));
             Session::set('password', $value['userpassword']);
             return true;
-            
-        } 
+        }
         return false;
+    }
+
+    public function register_login($username, $password, $repassword, $fullname, $phone)
+    {
+        $username = $this->fm->validation($username);
+        $password = $this->fm->validation($password);
+        $repassword = $this->fm->validation($repassword);
+        $fullname = $this->fm->validation($fullname);
+        $phone = $this->fm->validation($phone);
+
+        $username = mysqli_real_escape_string($this->db->link, $username);
+        $password = mysqli_real_escape_string($this->db->link, $password);
+        $repassword = mysqli_real_escape_string($this->db->link, $repassword);
+        $fullname = mysqli_real_escape_string($this->db->link, $fullname);
+        $phone = mysqli_real_escape_string($this->db->link, $phone);
+        $query = "SELECT * FROM `tbl_useraccount` WHERE `username` = '$username'";
+        $result1 = $this->db->select($query);
+        if ($result1)
+            return -1;
+        if ($password != $repassword)
+            return 0;
+        $query = "INSERT INTO `tbl_useraccount`(`username`,`userpassword`,`fullname`,`phone`) VALUES('$username', '$password', '$fullname', '$phone')";
+        $result2 = $this->db->insert($query);
+        if ($result2) {
+            return 1;
+        }
+        return 2;
     }
 
     public function user_check()

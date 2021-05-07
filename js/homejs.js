@@ -137,6 +137,66 @@ function requestAjaxToLogin() {
         })
     );
 }
+function requestAjaxToRegister() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let repassword = document.getElementById('repassword').value;
+    let fullname = document.getElementById('fullname').value;
+    let phone = document.getElementById('phone').value;
+    $(document).ready(
+        $.ajax({
+            method: 'POST',
+            url: 'classes/getregister.php',
+            data: {
+                'username': username,
+                'password': password,
+                'repassword': repassword,
+                'fullname': fullname,
+                'phone': phone
+            },
+            success: function (response) {
+                resRegister(response);
+            }
+        })
+    );
+    function resRegister(response) {
+        if (response == -1) {
+            $('#spanlogin').html("Tên đăng nhập đã tồn tại");
+        }
+        else if (response == 0){
+            $('#spanlogin').html("Mật khẩu không khớp");;
+        }
+        else if (response == 1){
+            $('#spanlogin').html("Đã tạo tài khoản thành công");
+        }
+        else {
+            window.open('404.php');
+        }
+    }
+}
+
+function toRegister() {
+    document.querySelector('.form-title h4').innerText = 'Sign Up';
+    document.getElementById('footer_signin').classList.toggle('d-none');
+    document.querySelector('.signup-section').classList.toggle('d-none');
+    document.getElementById('fg_repassword').classList.toggle('d-none');
+    document.getElementById('btnregister').classList.toggle('d-none');
+    document.getElementById('btnlogin').classList.toggle('d-none');
+    document.getElementById('fg_fullname').classList.toggle('d-none');
+    document.getElementById('fg_phone').classList.toggle('d-none');
+
+}
+
+function toSignIn() {
+    document.querySelector('.form-title h4').innerText = 'Login';
+    document.getElementById('footer_signin').classList.toggle('d-none');
+    document.querySelector('.signup-section').classList.toggle('d-none');
+    document.getElementById('fg_repassword').classList.toggle('d-none');
+    document.getElementById('btnregister').classList.toggle('d-none');
+    document.getElementById('btnlogin').classList.toggle('d-none');
+    document.getElementById('fg_fullname').classList.toggle('d-none');
+    document.getElementById('fg_phone').classList.toggle('d-none');
+}
 
 function toCheckcout(status) {
     (status == '1') ? window.open('thanhtoan.php') : document.getElementById('btnLogin').click();
