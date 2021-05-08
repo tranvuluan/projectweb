@@ -2,11 +2,13 @@
 ob_start();
 $filepath = realpath(dirname(__FILE__));
 include_once $filepath . '/../lib/session.php';
+
 ?>
 
 <?php
 Session::init();
 Session::checkUserLogin();
+
 ?>
 
 
@@ -90,8 +92,6 @@ Session::checkUserLogin();
                     </li>
                     <li><a href="khuyenmai.php" title="Khuyến mãi">Khuyễn mãi</a>
                         <!--  -->
-                    </li>
-                    <li><a href="blog.php" title="Blog">Blog</a>
                     </li>
                     <li><a href="contact.php" title="Liện hệ">Liên hệ</a></li>
                 </ul>

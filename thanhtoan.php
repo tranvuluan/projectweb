@@ -20,7 +20,7 @@ if (isset($_GET['hoten'])) {
     $ghichu = $_GET['description'];
     $totalprice = $_SESSION['totalprice'];
     $checkout = new checkout();
-    $addorder = $checkout->addOrder($id_user,$hoten, $diachi,$email, $phone, $address, $ghichu, $totalprice, $_SESSION['cart']);
+    $addorder = $checkout->addOrder($id_user,$hoten,$email, $phone, $address, $ghichu, $totalprice, $_SESSION['cart']);
     if ($addorder) {
         header('Location: index.php');
     }

@@ -7,6 +7,7 @@ $filepath = realpath(dirname(__FILE__));
 include_once $filepath . '/../helpers/format.php';
 ?>
 
+
 <?php
 $fm = new Format();
 if (isset($_GET['id_book'])) {
@@ -67,7 +68,7 @@ if (isset($_GET['id_book'])) {
                             <a href="cart.php?id_book=<?php echo $result['id_book'] ?>">
                                 <div class="btn btn-danger mybtn">Mua ngay</div>
                             </a>
-                            <a>
+                            <a href="?id_bookaddtocart=<?php echo $result['id_book']?>" onclick="alert('Đã thêm sách vào giỏ hàng');">
                                 <div class="btn btn-danger mybtn">Thêm vào giỏ hàng</div>
                             </a>
                         </div>

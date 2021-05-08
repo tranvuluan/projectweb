@@ -42,15 +42,6 @@ if (isset($_GET['id_book'])) {
     header("Location:cart.php");
 }
 
-// Load page
-
-
-echo "<pre>";
-print_r($_SESSION['cart']);
-echo $_SESSION['id_user'];
-echo "</pre>";
-
-
 
 ?>
 
@@ -94,7 +85,7 @@ echo "</pre>";
                             </tbody>
                         </table>
                     </div>
-                <?php } else echo '<div class="text-center"><img src="images/empty_cart.png"><br>Giỏ hàng hiện rỗng</div>' ?>
+                <?php } else echo '<div class="text-center"><img src="image/empty_cart.png"><br>Giỏ hàng hiện rỗng</div>' ?>
             </div>
         </div>
     </div>

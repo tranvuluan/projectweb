@@ -21,7 +21,7 @@ if (isset($_GET['id_categorychild']) && isset($_GET['id_filter'])) {
                     <div class="product-image">
                         <div class="icon-product">
                             <i class="fa fa-search-plus" onclick="quickview('<?php echo $result['id_book'] ?>');" aria-hidden="true" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"></i>
-                            <i onclick="addToCart(this)" class="fa fa-cart-plus" aria-hidden="true"></i>
+                            <a href="?id_bookaddtocart=<?php echo $result['id_book']?>" onclick="alert('Đã thêm sách vào giỏ hàng');"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
                         </div>
                         <img src="uploads/images/book/<?php $imagepath = explode(',', $result['image_book']);
                                                         echo $imagepath[0]; ?>" alt="">

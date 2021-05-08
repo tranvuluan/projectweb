@@ -14,6 +14,35 @@ include_once($filepath . '/classes/sach.php');
 $book = new sach();
 $khuyenmai = new khuyenmai();
 $danhmuc = new danhmucsach();
+isset($_SESSION['cart']) ? $_SESSION['cart'] : $_SESSION['cart'] = null;
+if (isset($_GET['id_bookaddtocart'])) {
+    $id_book = $_GET['id_bookaddtocart'];
+    if (!isset($_SESSION['cart'][$id_book])) {
+        $showBookByID = $book->showBookByID($id_book);
+        if ($showBookByID)
+            $rs = $showBookByID->fetch_assoc();
+
+        $discountpercent = 1;
+        if ($rs['salecheck_book'] == '2') {
+            $showBookSaleByIdBook = $khuyenmai->showBookSaleById_book($id_book);
+            if ($showBookSaleByIdBook)
+                $discountpercent = 1 - $showBookSaleByIdBook->fetch_assoc()['discountpercent'];
+        }
+
+        $item = [
+            'id_book' => $rs['id_book'],
+            'name_book' => $rs['name_book'],
+            'price_book' => $rs['price_book'] * $discountpercent,
+            'original_price' => $rs['price_book'],
+            'image_book' => substr($rs['image_book'], strpos($rs['image_book'], ',')),
+            'quantity' => 1
+        ];
+        $_SESSION['cart'][$id_book] = $item;
+    } else
+        $_SESSION['cart'][$id_book]['quantity']++;
+    unset($_GET['id_book']);
+    header('Location: index.php');
+}
 ?>
 <!-- Kết thúc header -->
 <!-- Phần danh mục và slide -->
@@ -55,7 +84,7 @@ $danhmuc = new danhmucsach();
                 </a>
                 <div class="phumuc selfhelp">
                     <ul>
-                    <?php
+                        <?php
                         $showcategorychild = $danhmuc->showDanhmuccon('2');
                         if ($showcategorychild) {
                             while ($rscategorychild = $showcategorychild->fetch_assoc()) {
@@ -78,7 +107,7 @@ $danhmuc = new danhmucsach();
                 </a>
                 <div class="phumuc language">
                     <ul>
-                    <?php
+                        <?php
                         $showcategorychild = $danhmuc->showDanhmuccon('3');
                         if ($showcategorychild) {
                             while ($rscategorychild = $showcategorychild->fetch_assoc()) {
@@ -86,29 +115,6 @@ $danhmuc = new danhmucsach();
                                 <li>
                                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                     <a href="ngoaingu.php"><?php echo $rscategorychild['name_categorychild'] ?></a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="thpt.php">
-                    <div class="fa fa-book"></div>
-                    <h6>Sách luyện thi THPT<i class="fa fa-angle-right" style="margin-left: 120px;" aria-hidden="true"></i></h6>
-                </a>
-                <div class="phumuc thpt">
-                    <ul>
-                    <?php
-                        $showcategorychild = $danhmuc->showDanhmuccon('8');
-                        if ($showcategorychild) {
-                            while ($rscategorychild = $showcategorychild->fetch_assoc()) {
-                        ?>
-                                <li>
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                    <a href="thpt.php"><?php echo $rscategorychild['name_categorychild'] ?></a>
                                 </li>
                         <?php
                             }
@@ -199,7 +205,7 @@ $danhmuc = new danhmucsach();
                             <div class="product-image">
                                 <div class="icon-product">
                                     <i class="fa fa-search-plus" onclick="quickview('<?php echo $result['id_book'] ?>');" aria-hidden="true" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"></i>
-                                    <i onclick="addToCart(this)" data-cart="Đường vào lập trình Python - Nguyễn Ngọc Giang|50000|image/SaleOFF/Slide-right/duongvaolaptrinhPython.jpg" class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    <a href="?id_bookaddtocart=<?php echo $result['id_book']?>" onclick="alert('Đã thêm sách vào giỏ hàng');"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
                                 </div>
                                 <img src="uploads/images/book/<?php
                                                                 $imagepath = explode(',', $result['image_book']);
@@ -260,7 +266,8 @@ $danhmuc = new danhmucsach();
                             <div class="product-image">
                                 <div class="icon-product">
                                     <i class="fa fa-search-plus" onclick="quickview('<?php echo $result1['id_book'] ?>');" aria-hidden="true" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"></i>
-                                    <i onclick="addToCart(this)" data-cart="Đường vào lập trình Python - Nguyễn Ngọc Giang|50000|image/SaleOFF/Slide-right/duongvaolaptrinhPython.jpg" class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    <a href="?id_bookaddtocart=<?php echo $result1['id_book']?>" onclick="alert('Đã thêm sách vào giỏ hàng');"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
                                 </div>
                                 <img src="uploads/images/book/<?php $imagepath = explode(',', $result1['image_book']);
                                                                 echo $imagepath[0]; ?>" alt="">
@@ -282,7 +289,7 @@ $danhmuc = new danhmucsach();
                                 } else
 
                                 ?>
-                                <h5 class="price"><?php echo $result1['price_book'] ?></h5>
+                                <h5 class="price"><?php echo $result1['price_book'] ?>đ</h5>
                             </a>
                         </div>
                 <?php

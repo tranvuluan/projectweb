@@ -48,7 +48,19 @@ class useraccount {
         return $result;
     }
 
+    public function blockAccount($id_user) {
+        $id_user = $id_user;
+        $query = "UPDATE `tbl_useraccount` SET status = '1' WHERE id_user = '$id_user'";
+        $result = $this->db->update($query);
+        return $result;
+    }
 
+    public function unblockAccount($id_user) {
+        $id_user = $id_user;
+        $query = "UPDATE `tbl_useraccount` SET status = '0' WHERE id_user = '$id_user'";
+        $result = $this->db->update($query);
+        return $result;
+    }
 
 }
 

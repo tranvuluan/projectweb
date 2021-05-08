@@ -8,12 +8,44 @@ $filepath = realpath(dirname(__FILE__));
 include_once $filepath . '/classes/danhmuc.php';
 $filepath = realpath(dirname(__FILE__));
 include_once $filepath . '/classes/sach.php';
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/classes/khuyenmai.php');
 ?>
 
 <?php
 $danhmuc = new danhmucsach();
 $book = new sach();
+$khuyenmai = new khuyenmai();
 
+isset($_SESSION['cart']) ? $_SESSION['cart'] : $_SESSION['cart'] = null;
+if (isset($_GET['id_bookaddtocart'])) {
+    $id_book = $_GET['id_bookaddtocart'];
+    if (!isset($_SESSION['cart'][$id_book])) {
+        $showBookByID = $book->showBookByID($id_book);
+        if ($showBookByID)
+            $rs = $showBookByID->fetch_assoc();
+
+        $discountpercent = 1;
+        if ($rs['salecheck_book'] == '2') {
+            $showBookSaleByIdBook = $khuyenmai->showBookSaleById_book($id_book);
+            if ($showBookSaleByIdBook)
+                $discountpercent = 1 - $showBookSaleByIdBook->fetch_assoc()['discountpercent'];
+        }
+
+        $item = [
+            'id_book' => $rs['id_book'],
+            'name_book' => $rs['name_book'],
+            'price_book' => $rs['price_book'] * $discountpercent,
+            'original_price' => $rs['price_book'],
+            'image_book' => substr($rs['image_book'], strpos($rs['image_book'], ',')),
+            'quantity' => 1
+        ];
+        $_SESSION['cart'][$id_book] = $item;
+    } else
+        $_SESSION['cart'][$id_book]['quantity']++;
+    unset($_GET['id_book']);
+    header('Location: congnghethongtin.php');
+}
 ?>
 <!-- Kết thúc header -->
 
@@ -47,9 +79,6 @@ $book = new sach();
     </div>
     <div class="cntt-content_right ngonngulaptrinh">
         <div class="right-content_top">
-            <div class="_title">
-                <span>C/C++, JS, React, Python...</span>
-            </div>
             <div class="filter_content">
                 <button onclick="filter('0',this)" class="btn btn-outline-info btn-sm filter active">Khuyến mãi</button>
                 <button  onclick="filter('1',this)" class="btn btn-outline-info btn-sm filter">Mới
